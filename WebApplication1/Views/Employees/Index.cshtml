@@ -1,0 +1,104 @@
+﻿@model WebApplication1.Models.DTOSearch
+
+@{
+    ViewBag.Title = "Employees List";
+}
+
+<h2>Employees List</h2>
+
+
+
+@using (@Html.BeginForm())
+{
+    <!-- form content here -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-info">Please type Employee ID and press get Employees Button</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.EditorForModel(Model.SearchField, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-8">                
+                <br />
+                <input type="submit" class="btn btn-default" value="Get Employees" />
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                        <table id="EmployeesTable" class="table table-condensed table-hover table-striped">
+                            <thead >                                
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        ContractType Name
+                                    </th>
+                                    <th>
+                                        Role Id
+                                    </th>
+                                    <th>
+                                        Role Name
+                                    </th>
+                                    <th>
+                                        Role Description
+                                    </th>
+                                    <th>
+                                        Hourly Salary
+                                    </th>
+                                    <th>
+                                        MonthlySalary
+                                    </th>
+                                    <th>
+                                        calculatedAnnualSalary
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.DTOEmployeesTable)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContractTypeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoleId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoleDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HourlySalary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MonthlySalary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.calculatedAnnualSalary)
+                        </td>
+
+                    </tr>
+                   }
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+</div>
